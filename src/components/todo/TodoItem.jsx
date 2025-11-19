@@ -1,12 +1,14 @@
 import React from 'react';
 
-const TodoItem = ({ task }) => {
+const TodoItem = ({ task, removeTask }) => {
   return (
     <div className="todo-item">
       <input type="checkbox" defaultChecked={task.done} />
       <span className={task.done ? "done" : ""}>{task.title}</span>
 
-      <button className="remove-btn">Remove</button>
+      <button className="remove-btn" onClick={() => removeTask(task.id)}>
+        Remove
+      </button>
     </div>
   );
 };

@@ -12,6 +12,14 @@ const User = () => {
     setUser({ ...user, age: user.age + 1 });
   };
 
+  const changeHandler = (e) => { 
+    setName(e.target.value);
+  }
+
+  const changeUserName = () => { 
+    setUser({...user, name: name})
+  }
+
   return (
     <div>
       <h2>
@@ -19,8 +27,8 @@ const User = () => {
       </h2>
       <button onClick={changeAge}>Change age</button>
       <div>
-        <input type="text" value={name} />
-        <button>save</button>
+        <input type="text" value={name} onChange={changeHandler} />
+        <button onClick={changeUserName}>save</button>
       </div>
     </div>
   );

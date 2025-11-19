@@ -33,3 +33,9 @@
 .done{
     text-decoration: line-through;
 }
+
+
+.error{
+    color: red;
+    font-size: .9em;   
+}
