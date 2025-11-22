@@ -5,19 +5,15 @@ const TodoItem = ({ task, removeTask, toggleDone, changeTitle }) => {
   const [newTitle, setNewTitle] = useState(task.title);
   const [error, setError] = useState(false);
 
-  const saveTask = (e) => { 
-    
-    if (e.code === "Enter") { 
-      if (newTitle === "") { 
+  const saveTask = (e) => {
+      if (newTitle === "") {
         setError(true);
         return;
       }
       changeTitle(task.id, newTitle);
-      setIsEdit(false)
-      setError(false)
-    }
-    
-  }
+      setIsEdit(false);
+      setError(false);
+  };
 
   return (
     <div className="todo-item">
@@ -30,11 +26,13 @@ const TodoItem = ({ task, removeTask, toggleDone, changeTitle }) => {
       {isEdit ? (
         <>
           <input
-          type="text"
-          value={newTitle}
-          onChange={(e) => setNewTitle(e.target.value)}
-          onKeyDown={saveTask}
-        />
+            type="text"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            autoFocus={true}
+            onKeyDown={(e) => { if (e.code === "Enter") saveTask() }}
+            onBlur={saveTask}
+          />
           {error && <div className="error">Title is required</div>}
         </>
       ) : (

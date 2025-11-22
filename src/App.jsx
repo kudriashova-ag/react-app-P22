@@ -1,12 +1,12 @@
-import First from "./components/learn/First";
+import Theme from "./components/learn/Theme";
 import TodoList from "./components/todo/TodoList";
 
 function App() {
   
   return (
     <>
-      <TodoList />
-      {/* <First /> */}
+      {/* <TodoList /> */}
+      <Theme />
     </>
   )
 }
