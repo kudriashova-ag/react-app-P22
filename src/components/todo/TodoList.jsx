@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { act, useEffect, useReducer, useState } from "react";
 import "./Todo.css";
 import TodoForm from "./TodoForm";
 import TodoFilter from "./TodoFilter";
 import TodoItem from "./TodoItem";
 import list from "./data";
+import TaskReducer from "../../reducers/TaskReducer";
 
 const TodoList = () => {
-  const [tasks, setTasks] = useState(list); 
-  const [activeFilter, setActiveFilter] = useState('All tasks');
+  const [tasks, dispatch] = useReducer(TaskReducer, list);
+  const [activeFilter, setActiveFilter] = useState("All tasks");
 
-  // [] - викликається один раз при першому рендері компонента
   useEffect(() => {
-    const tasksFromStorage = localStorage.getItem('tasks')
-    if (tasksFromStorage) { 
-      setTasks(JSON.parse(tasksFromStorage));
+    const tasksFromStorage = localStorage.getItem("tasks");
+    if (tasksFromStorage) {
+      dispatch({
+        type: "fill",
+        payload: JSON.parse(tasksFromStorage),
+      });
     }
-    const filterFromStorage = localStorage.getItem('filter')
-    if (filterFromStorage) { 
+    
+    const filterFromStorage = localStorage.getItem("filter");
+    if (filterFromStorage) {
       setActiveFilter(filterFromStorage);
     }
-   }, [])
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
   useEffect(() => {
@@ -30,38 +34,38 @@ const TodoList = () => {
   }, [activeFilter]);
 
   const addTask = (title) => {
-    setTasks([...tasks, { id: Date.now(), title: title, done: false }]);
+    dispatch({
+      type: "add",
+      payload: title,
+    });
   };
 
   const removeTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
+    dispatch({
+      type: "remove",
+      payload: id,
+    });
   };
 
   const toggleDone = (id) => {
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        return { ...task, done: !task.done };
-      } else return task;
+    dispatch({
+      type: "changeDone",
+      payload: id,
     });
-    setTasks(newTasks);
   };
 
   const changeTitle = (id, newTitle) => {
-    const newTasks = tasks.map((task) => {
-      if (task.id === id) {
-        return { ...task, title: newTitle };
-      } else return task;
+    dispatch({
+      type: "changeTitle",
+      payload: { id, title: newTitle },
     });
-    setTasks(newTasks);
   };
 
   const filtersData = {
-    'All tasks': () => true,
+    "All tasks": () => true,
     done: (task) => task.done,
     todo: (task) => !task.done,
   };
-
-
 
   return (
     <div className="todo">

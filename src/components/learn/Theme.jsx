@@ -6,6 +6,7 @@ const Theme = () => {
   useEffect(() => {
     setTheme(localStorage.getItem("theme") || "light");
   }, []);
+
   useEffect(() => {
     localStorage.setItem("theme", theme);
   }, [theme]);
@@ -14,14 +15,9 @@ const Theme = () => {
     <div>
       <button onClick={() => setTheme("light")}>Light</button>
       <button onClick={() => setTheme("dark")}>Dark</button>
-      <div
-        className="block"
-        style={{
-          backgroundColor: theme === "dark" ? "black" : "white",
-          color: theme === "dark" ? "white" : "black",
-        }}
-      >
+      <div className={`block theme-${theme}`}>
         Lorem ipsum dolor sit amet.
+        <button>Click me</button>
       </div>
     </div>
   );

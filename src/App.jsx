@@ -1,4 +1,4 @@
-import Theme from "./components/learn/Theme";
+import Counters from "./components/learn/Counters";
 import TodoList from "./components/todo/TodoList";
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       {/* <TodoList /> */}
-      <Theme />
+      <Counters />
     </>
   )
 }

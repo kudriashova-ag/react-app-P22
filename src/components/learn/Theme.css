@@ -3,3 +3,13 @@
     padding: 30px;
     border: 1px black solid
 }
+
+.theme-dark{
+    background-color: black;
+    color: white;
+}
+
+.theme-dark button{
+    background-color: #333;
+    color: white;
+}
