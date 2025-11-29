@@ -7,6 +7,7 @@ import TodoList from './components/todo/TodoList';
 import User from './components/learn/User';
 import ThemeContext from './contexts/ThemeContext';
 import ThemeProvider from './providers/ThemeProvider';
+import I18nProvider from './providers/I18nProvider';
 
 const router = createBrowserRouter([
   {
@@ -30,9 +31,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <ThemeProvider>
-    <RouterProvider router={router} />
-  </ThemeProvider>
+  <I18nProvider>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </I18nProvider>
 );
 
 

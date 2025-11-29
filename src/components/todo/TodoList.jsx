@@ -1,14 +1,17 @@
-import React, { act, useEffect, useReducer, useState } from "react";
+import React, { act, useContext, useEffect, useReducer, useState } from "react";
 import "./Todo.css";
 import TodoForm from "./TodoForm";
 import TodoFilter from "./TodoFilter";
 import TodoItem from "./TodoItem";
 import list from "./data";
 import TaskReducer from "../../reducers/TaskReducer";
+import I18nContext from "../../contexts/I18nContext";
 
 const TodoList = () => {
   const [tasks, dispatch] = useReducer(TaskReducer, list);
   const [activeFilter, setActiveFilter] = useState("All tasks");
+  const { currentTexts } = useContext(I18nContext);
+  
 
   useEffect(() => {
     const tasksFromStorage = localStorage.getItem("tasks");
@@ -69,7 +72,7 @@ const TodoList = () => {
 
   return (
     <div className="todo">
-      <h1>TODO LIST</h1>
+      <h1>{currentTexts.todoList}</h1>
       <TodoForm addTask={addTask} />
       <div className="todo-panel">
         <TodoFilter

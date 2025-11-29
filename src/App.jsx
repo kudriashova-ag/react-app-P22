@@ -1,16 +1,17 @@
 import { Outlet } from "react-router";
 import MainMenu from "./components/templates/MainMenu";
+import ThemeButton from "./components/themeButton/ThemeButton";
 import { useContext } from "react";
-import ThemeContext from "./contexts/ThemeContext";
+import I18nContext from "./contexts/I18nContext";
 
 function App() {
-  const {theme, toggleTheme} = useContext(ThemeContext)
+  const { currentLang, changeLang } = useContext(I18nContext);
   return (
     <>
       <header>
         <MainMenu />
-        {theme}
-        <button onClick={toggleTheme}>change</button>
+        <button onClick={() => changeLang("ua")}>{currentLang}</button>
+        <ThemeButton />
       </header>
       <Outlet />
     </>
