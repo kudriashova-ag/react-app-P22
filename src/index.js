@@ -5,9 +5,9 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import TodoList from './components/todo/TodoList';
 import User from './components/learn/User';
-import ThemeContext from './contexts/ThemeContext';
 import ThemeProvider from './providers/ThemeProvider';
 import I18nProvider from './providers/I18nProvider';
+import Register from './pages/Register';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "user",
         element: <User />
+      },
+      {
+        path: "register",
+        element: <Register />
       }
     ]
   },
@@ -37,10 +41,6 @@ root.render(
     </ThemeProvider>
   </I18nProvider>
 );
-
-
-
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
