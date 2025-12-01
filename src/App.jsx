@@ -12,14 +12,16 @@ function App() {
       <header>
         <MainMenu />
 
-        <div style={{display: 'flex', gap: '10px'}}>
-          <button onClick={() => changeLang("ua")}>{currentLang}</button>
+        <div style={{ display: "flex", gap: "10px" }}>
+          
+          <button onClick={() => changeLang("ua")}>UA</button>
+          <button onClick={() => changeLang("en")}>EN</button>
+
           <ThemeButton />
           <Link to="register" className="btn-icon">
             <UserOutlined />
           </Link>
         </div>
-
       </header>
       <Outlet />
     </>
