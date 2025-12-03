@@ -13,7 +13,6 @@ function App() {
         <MainMenu />
 
         <div style={{ display: "flex", gap: "10px" }}>
-          
           <button onClick={() => changeLang("ua")}>UA</button>
           <button onClick={() => changeLang("en")}>EN</button>
 
@@ -23,7 +22,9 @@ function App() {
           </Link>
         </div>
       </header>
-      <Outlet />
+      <div className="container">
+        <Outlet />
+      </div>
     </>
   );
 }
