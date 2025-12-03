@@ -4,7 +4,7 @@ const MainMenu = () => {
     return (
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="user">User</NavLink>
+        <NavLink to="users">Users</NavLink>
       </nav>
     );
 }

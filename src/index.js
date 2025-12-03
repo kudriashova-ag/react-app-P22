@@ -1,35 +1,10 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter, RouterProvider } from 'react-router';
-import TodoList from './components/todo/TodoList';
-import User from './components/learn/User';
+import { RouterProvider } from 'react-router';
 import ThemeProvider from './providers/ThemeProvider';
 import I18nProvider from './providers/I18nProvider';
-import Register from './pages/Register';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        index: true,
-        element: <TodoList />
-      },
-      {
-        path: "user",
-        element: <User />
-      },
-      {
-        path: "register",
-        element: <Register />
-      }
-    ]
-  },
-
-])
+import router from './router';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
