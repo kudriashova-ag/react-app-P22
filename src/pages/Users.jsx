@@ -1,8 +1,14 @@
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData, useSearchParams } from "react-router";
 import Search from "../components/search/Search";
 
 const Users = () => {
   const users = useLoaderData();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const filterUsers = (user) => { 
+    if(!searchParams.get('q')) return true
+    return user.login.toLowerCase().includes(searchParams.get('q'));
+  }
 
   return (
     <div>
@@ -13,7 +19,7 @@ const Users = () => {
       </div>
 
       <div className="user-list">
-        {users.map((user) => (
+        {users.filter(filterUsers).map((user) => (
           <div key={user.id}>
             <Link to={`/users/${user.login}`}>
               <img src={user.avatar_url} alt="" />

@@ -3,8 +3,9 @@ import App from "./App";
 import TodoList from "./components/todo/TodoList";
 import Register from "./pages/Register";
 import Users from "./pages/Users";
-import { getUser, getUsers } from "./loaders/usersLoaders";
+import { getSearchUsers, getUser, getUsers } from "./loaders/usersLoaders";
 import User from "./pages/User";
+import Search from "./pages/Search";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
                 path: "users/:login",
                 loader: getUser,
                 element: <User />
+            },
+            {
+                path: 'search',
+                loader: getSearchUsers,
+                element: <Search />
             }
         ]
     },
