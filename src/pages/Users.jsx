@@ -1,27 +1,24 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
+import Search from "../components/search/Search";
 
 const Users = () => {
-  /*const [users, setUsers] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get("https://api.github.com/users");
-      setUsers(response.data);
-    };
-    getData();
-  }, []);*/
-
   const users = useLoaderData();
 
   return (
     <div>
-      <h1>Users</h1>
+
+      <div className="users-title">
+        <h1>Users</h1>
+        <Search />
+      </div>
+
       <div className="user-list">
         {users.map((user) => (
           <div key={user.id}>
-            <img src={user.avatar_url} alt="" />
-            {user.login}
+            <Link to={`/users/${user.login}`}>
+              <img src={user.avatar_url} alt="" />
+              {user.login}
+            </Link>
           </div>
         ))}
       </div>

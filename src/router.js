@@ -3,7 +3,8 @@ import App from "./App";
 import TodoList from "./components/todo/TodoList";
 import Register from "./pages/Register";
 import Users from "./pages/Users";
-import { getUsers } from "./loaders/usersLoaders";
+import { getUser, getUsers } from "./loaders/usersLoaders";
+import User from "./pages/User";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
                 path: "users",
                 element: <Users />,
                 loader: getUsers
+            },
+            {
+                path: "users/:login",
+                loader: getUser,
+                element: <User />
             }
         ]
     },
