@@ -6,6 +6,10 @@ import Users from "./pages/Users";
 import { getSearchUsers, getUser, getUsers } from "./loaders/usersLoaders";
 import User from "./pages/User";
 import Search from "./pages/Search";
+import Weather from "./pages/Weather";
+import { getWeatherByCity } from "./loaders/weatherLoaders";
+import ErrorPage from "./pages/ErrorPage";
+import Reservation from "./pages/Reservation";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +38,16 @@ const router = createBrowserRouter([
                 path: 'search',
                 loader: getSearchUsers,
                 element: <Search />
+            },
+            {
+                path: 'weather',
+                element: <Weather />,
+                loader: getWeatherByCity,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: 'reservation',
+                element: <Reservation />
             }
         ]
     },

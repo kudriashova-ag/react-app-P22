@@ -10,8 +10,8 @@ export const getUser = async ({ params }) => {
     return response.data;
 }
 
-export const getSearchUsers = async ({ request }) => {
-    const url = new URL(request.url);   // 'http://localhost:3000/search?q=a'
+export const getSearchUsers = async ({ request, params }) => {
+    const url = new URL(request.url);
     const s = url.searchParams.get("q");
     const response = await axios.get("https://api.github.com/users");
     return response.data.filter((user) => user.login.includes(s));
