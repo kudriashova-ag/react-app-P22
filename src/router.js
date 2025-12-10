@@ -10,6 +10,7 @@ import Weather from "./pages/Weather";
 import { getWeatherByCity } from "./loaders/weatherLoaders";
 import ErrorPage from "./pages/ErrorPage";
 import Reservation from "./pages/Reservation";
+import Posts from "./pages/Posts";
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
                 element: <Weather />,
                 loader: getWeatherByCity,
                 errorElement: <ErrorPage />,
+            },
+            {
+                path: 'posts',
+                element: <Posts />
             },
             {
                 path: 'reservation',
