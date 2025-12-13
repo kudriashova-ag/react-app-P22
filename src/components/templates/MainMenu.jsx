@@ -8,6 +8,7 @@ const MainMenu = () => {
         <NavLink to="weather">Weather</NavLink>
         <NavLink to="reservation">Reservation</NavLink>
         <NavLink to="posts">Posts</NavLink>
+        <NavLink to="ref">Ref</NavLink>
       </nav>
     );
 }

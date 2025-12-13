@@ -7,6 +7,8 @@ import { UserOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, incrementByAmount } from "./slices/counterSlice";
 import { getPosts } from "./slices/postsSlice";
+import  Search  from "./components/search/Search";
+
 
 function App() {
   const { currentLang, changeLang } = useContext(I18nContext);
@@ -22,11 +24,7 @@ function App() {
       <header>
         <MainMenu />
         <div style={{ color: "#fff" }}>
-          Posts: {data.length}
-          <button onClick={() => dispatch(decrement())}>-</button>
-          <span>{counter}</span>
-          <button onClick={() => dispatch(increment())}>+</button>
-          <button onClick={() => dispatch(incrementByAmount(3))}>+3</button>
+           <Search />
         </div>
 
         <div style={{ display: "flex", gap: "10px" }}>

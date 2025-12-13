@@ -1,5 +1,4 @@
 import { Link, useLoaderData, useSearchParams } from "react-router";
-import Search from "../components/search/Search";
 
 const Users = () => {
   const users = useLoaderData();
@@ -15,7 +14,6 @@ const Users = () => {
 
       <div className="users-title">
         <h1>Users</h1>
-        <Search />
       </div>
 
       <div className="user-list">

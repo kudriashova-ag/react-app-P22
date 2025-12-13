@@ -11,6 +11,7 @@ import { getWeatherByCity } from "./loaders/weatherLoaders";
 import ErrorPage from "./pages/ErrorPage";
 import Reservation from "./pages/Reservation";
 import Posts from "./pages/Posts";
+import Ref from "./pages/Ref";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             {
                 path: 'posts',
                 element: <Posts />
+            },
+            {
+                path: 'ref',
+                element: <Ref />
             },
             {
                 path: 'reservation',
